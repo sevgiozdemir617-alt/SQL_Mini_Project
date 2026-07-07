@@ -36,7 +36,13 @@ The analysis focuses on four business questions:
 
 ## 📊 Data Sources
 
-The project uses five fraud analytics datasets.
+The project uses five fraud analytics datasets obtained from Kaggle.
+
+**Original Dataset:**
+
+[Kaggle Dataset]https://www.kaggle.com/datasets/sergionefedov/fraud-detection-1m-transactions-7-fraud-types
+
+The project uses the following five datasets:
 
 ### Transactions
 
@@ -58,7 +64,7 @@ Relationships between connected accounts and identified fraud rings, supporting 
 
 Fraud metrics across time periods used to analyze fraud activity and trends.
 
-The full transaction datasets are excluded from this repository because they exceed GitHub's 100 MB file size limit.
+**Note:** The raw and cleaned transaction datasets are excluded from this repository because each file exceeds GitHub's 100 MB file size limit. Both files are listed in `.gitignore`. The original data can be accessed through the Kaggle dataset linked above.
 
 ## 🔧 Methodology
 

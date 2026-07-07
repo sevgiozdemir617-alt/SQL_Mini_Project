@@ -1,22 +1,30 @@
-# Payment Card Fraud Analytics
+# 💳 Payment Card Fraud Analytics
 
-## Project Overview
+## 📌 Project Overview
+
+This project was developed as part of the Ironhack Data Analytics Bootcamp.
+
+The objective was to analyze payment card fraud using relational databases and SQL to identify the transaction patterns, account characteristics, and network behaviors most strongly associated with fraudulent activity.
+
+The project combines Python based data preparation with MySQL database design and SQL analysis to transform multiple fraud datasets into actionable business insights.
+
+## 🎯 Business Problem
 
 Payment card fraud creates significant financial losses and operational risk for financial institutions.
 
-This project analyzes transaction, account, fraud pattern, time series, and network data to identify the characteristics and behavioral patterns most strongly associated with fraudulent activity.
+Fraud detection requires understanding not only individual fraudulent transactions, but also the account characteristics, transaction behaviors, and network relationships associated with higher fraud risk.
 
-The analysis combines Python for data preparation and MySQL for database design and business analysis.
+This project uses structured fraud data to identify high risk patterns and support more targeted fraud monitoring and investigation.
 
-## Business Case
+## 💡 Business Hypothesis
 
-A financial institution wants to improve its understanding of payment card fraud by identifying the transaction patterns, account characteristics, and network behaviors associated with fraudulent activity.
+Fraud risk is concentrated around identifiable transaction characteristics, higher risk account profiles, and connected account networks.
 
-The objective of this project is to use structured data analysis to identify high risk fraud patterns and translate the findings into actionable business insights.
+By analyzing these factors together, financial institutions can better identify the patterns associated with financial losses and coordinated fraud activity.
 
-## Business Questions
+## ❓ Research Questions
 
-The project focuses on four research questions:
+The analysis focuses on four business questions:
 
 1. Which fraud patterns generate the highest financial losses?
 
@@ -26,61 +34,59 @@ The project focuses on four research questions:
 
 4. Can network analysis identify coordinated fraud rings and high risk account clusters?
 
-## Data Sources
+## 📊 Data Sources
 
-The project uses five datasets:
+The project uses five fraud analytics datasets.
 
 ### Transactions
 
-Contains transaction level information including transaction amount, merchant category, device type, foreign transaction indicators, IP risk score, transaction velocity, and fraud status.
+Transaction level data including transaction amount, merchant category, device type, foreign transaction indicators, IP risk score, transaction velocity, and fraud status.
 
 ### Account Profiles
 
-Contains account level characteristics including account type, account age, risk score, two factor authentication status, and fraud history.
+Account level characteristics including account type, account age, risk score, two factor authentication status, and fraud history.
 
 ### Fraud Patterns
 
-Contains aggregated fraud pattern information used to evaluate fraud frequency and financial impact.
+Aggregated fraud pattern information used to evaluate fraud frequency and financial impact.
 
 ### Network Edges
 
-Contains relationships between connected accounts and identified fraud rings, supporting the analysis of coordinated fraud activity.
+Relationships between connected accounts and identified fraud rings, supporting the analysis of coordinated fraud activity.
 
 ### Time Series Statistics
 
-Contains fraud metrics across time periods to support trend and temporal analysis.
+Fraud metrics across time periods used to analyze fraud activity and trends.
 
 The full transaction datasets are excluded from this repository because they exceed GitHub's 100 MB file size limit.
 
-## Data Preparation
+## 🔧 Methodology
 
-Data preparation was completed in Python using Jupyter Notebook.
+The project followed these main steps:
 
-The main preparation steps included:
+1. Dataset inspection and validation
 
-1. Loading and inspecting all source datasets
+2. Data cleaning and preparation in Python
 
-2. Reviewing column names, data types, and missing values
+3. Primary key validation
 
-3. Validating primary key uniqueness
+4. Foreign key and dataset relationship validation
 
-4. Validating relationships between datasets
+5. Data type and column standardization
 
-5. Standardizing data types and column structures
+6. Clean dataset export for MySQL
 
-6. Preparing cleaned datasets for MySQL import
+7. Relational database creation
 
-7. Exporting cleaned CSV files for database creation
+8. SQL based exploratory analysis
 
-The data preparation workflow is available in:
+9. Business question analysis
 
-`notebooks/01_Data_preparation.ipynb`
+10. Fraud insight and recommendation development
 
-## Database Structure
+## 🗄 Database Structure
 
-The cleaned datasets were imported into MySQL and structured as relational tables.
-
-The main database tables are:
+The cleaned datasets were structured into five relational database tables:
 
 `transactions`
 
@@ -92,37 +98,29 @@ The main database tables are:
 
 `time_series_stats`
 
-Primary and foreign key relationships were reviewed to support data integrity and SQL analysis.
+Primary and foreign key relationships were reviewed to support data integrity and cross table analysis.
 
-## SQL Analysis
+## 🔍 SQL Analysis
 
-The SQL analysis includes database creation, table preparation, data validation, and queries designed to answer the four business research questions.
+The SQL analysis was structured around four research areas.
 
-The complete SQL analysis is available in:
+### Financial Impact of Fraud Patterns
 
-`sql/SQL_Merged_Database&Analysis.sql`
+Identifies fraud patterns associated with the highest total financial losses and evaluates fraud frequency and severity.
 
-## Tools and Technologies
+### Account Fraud Risk
 
-Python
+Analyzes account characteristics including risk score, account age, account type, and two factor authentication status.
 
-Pandas
+### Transaction Fraud Characteristics
 
-Jupyter Notebook
+Evaluates transaction characteristics including merchant category, device type, foreign transactions, IP risk score, and transaction velocity.
 
-MySQL
+### Network Fraud Analysis
 
-MySQL Workbench
+Analyzes shared account connections and fraud ring structures to identify highly connected clusters and coordinated fraud activity.
 
-SQL
-
-Visual Studio Code
-
-Git
-
-GitHub
-
-## Repository Structure
+## 📂 Repository Structure
 
 ```text
 SQL_Mini_Project/
@@ -149,8 +147,48 @@ SQL_Mini_Project/
 │
 └── README.md
 
-## Presentation
+🛠 Technologies Used
 
-The final project presentation is available here:
+Python
 
-[View the Payment Card Fraud Analytics Presentation]: https://docs.google.com/presentation/d/1zezE-2GEEpBFHoSCLyrewtu6iUBaoYea3pJn2T3Ktz0/edit?slide=id.p1#slide=id.p1
+Pandas
+
+Jupyter Notebook
+
+MySQL
+
+MySQL Workbench
+
+SQL
+
+Visual Studio Code
+
+Git
+
+GitHub
+
+👥 Team
+
+Winifred
+
+Sevgi Özdemir
+
+Ironhack Data Analytics Bootcamp
+
+📋 Project Management
+
+The project was managed using an Agile workflow in Trello, including sprint planning, task assignment, progress tracking, and collaboration throughout the project.
+
+Trello Board:
+
+https://trello.com/b/Bx7wiGFC/winifred-sevgi
+
+📽 Presentation
+
+Presentation Slides:
+
+https://docs.google.com/presentation/d/1zezE-2GEEpBFHoSCLyrewtu6iUBaoYea3pJn2T3Ktz0/edit?slide=id.p1#slide=id.p1
+
+📜 License
+
+This project was created for educational purposes as part of the Ironhack Data Analytics Bootcamp.

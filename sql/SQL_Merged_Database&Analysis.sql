@@ -193,14 +193,16 @@ LIMIT 5;
 -- ==========================================================
 -- Research Question 1: Fraud Pattern Financial Loss Analysis
 -- Business Question:
--- Which fraud patterns generate the highest financial losses
--- and should be prioritized for fraud prevention?
+-- Which fraud patterns generate the highest financial losses and should be prioritized for fraud prevention?
 -- ==========================================================
 
 USE fraud_analytics_project;
 
 -- Analysis 1
 -- Fraud loss by fraud pattern
+-- NOTE: This query includes a subquery.
+-- The subquery calculates the total fraud loss across all fraud transactions.
+-- The outer query uses it to calculate each fraud pattern's share of total fraud loss.
 
 SELECT
     transactions.fraud_pattern,
@@ -347,8 +349,7 @@ ORDER BY fraud_rate_pct DESC;
 -- Research Question 2: Customer Risk Analysis
 -- Analysis 5
 -- Business Question:
--- Are customers with higher risk scores more likely
--- to be involved in fraudulent transactions?
+-- Are customers with higher risk scores more likely to be involved in fraudulent transactions?
 -- ==========================================================
 
 SELECT
@@ -388,6 +389,24 @@ SELECT
     ) AS fraud_rate_pct
 FROM transactions
 GROUP BY transactions.merchant_category
+ORDER BY fraud_rate_pct DESC;
+
+-- Analysis 1B
+-- Merchant categories with fraud rate above 3%
+-- NOTE: This query uses HAVING because we are filtering after GROUP BY.
+
+SELECT
+    transactions.merchant_category,
+    COUNT(transactions.transaction_id) AS total_transactions,
+    SUM(transactions.is_fraud) AS fraud_transactions,
+    ROUND(
+        SUM(transactions.is_fraud) * 100 /
+        COUNT(transactions.transaction_id),
+        2
+    ) AS fraud_rate_pct
+FROM transactions
+GROUP BY transactions.merchant_category
+HAVING fraud_rate_pct > 3
 ORDER BY fraud_rate_pct DESC;
 
 
@@ -500,15 +519,13 @@ ORDER BY fraud_rate_pct DESC;
 
 -- ==========================================================
 -- RESEARCH QUESTION 4
--- Can network analysis identify coordinated fraud rings
--- and high-risk account clusters?
+-- Can network analysis identify coordinated fraud rings and high-risk account clusters?
 -- ==========================================================
 
 
 -- ----------------------------------------------------------
 -- 4.1 Network Analysis Summary
--- Measures the scale of coordinated fraud activity
--- across identified fraud rings.
+-- Measures the scale of coordinated fraud activity across identified fraud rings.
 -- ----------------------------------------------------------
 
 SELECT
@@ -523,8 +540,7 @@ WHERE ring_id IS NOT NULL
 
 -- ----------------------------------------------------------
 -- 4.2 Top Fraud Rings by Network Activity
--- Identifies the most highly connected fraud rings based
--- on the volume of shared network connections.
+-- Identifies the most highly connected fraud rings based on the volume of shared network connections.
 -- ----------------------------------------------------------
 
 SELECT
